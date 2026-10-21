@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taty Pereira Caseirinhos | Cardápio Gourmet</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-cream: #FCF9F5;
+      --card-bg: #FFFFFF;
+      --primary-pink: #E883A7;
+      --soft-pink: #FDF2F5;
+      --gold: #D4AF37;
+      --gold-light: #F4E8C1;
+      --text-brown: #4A332C;
+      --text-light: #7A655F;
+      --shadow-premium: 0 12px 32px rgba(74, 51, 44, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-brown);
+      line-height: 1.5;
+      padding-bottom: 120px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--soft-pink) 100%);
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .logo-container {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #FFF;
+      padding: 5px;
+      box-shadow: 0 8px 20px rgba(232, 131, 167, 0.2);
+      border: 1px solid var(--gold-light);
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    h1.brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-brown);
+    }
+
+    p.brand-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: -2px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 25px 16px;
+    }
+
+    /* Cards */
+    .info-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary-pink), var(--gold));
+    }
+
+    .info-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--text-brown);
+      margin-bottom: 12px;
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .info-list li::before {
+      content: "✦";
+      color: var(--gold);
+      font-size: 0.7rem;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    .category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--text-brown);
+      margin: 35px 0 20px;
+    }
+
+    .category-title::after {
+      content: '◇';
+      display: block;
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(232, 131, 167, 0.12);
+    }
+
+    .product-header {
+      margin-bottom: 15px;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-brown);
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .option-btn {
+      background: var(--soft-pink);
+      border: 1px solid rgba(232, 131, 167, 0.3);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .option-btn:hover {
+      background: var(--primary-pink);
+      color: #FFF;
+    }
+
+    .option-btn:hover .option-label,
+    .option-btn:hover .option-price {
+      color: #FFF;
+    }
+
+    .option-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-pink);
+      font-weight: 600;
+    }
+
+    .option-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-brown);
+    }
+
+    .addons-card {
+      background: linear-gradient(135deg, #FFF 0%, var(--soft-pink) 100%);
+      border: 1px dashed var(--gold);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .addons-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--text-brown);
+      margin-bottom: 6px;
+    }
+
+    .addons-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .addon-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .addon-chip {
+      background: #FFF;
+      border: 1px solid var(--gold-light);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-brown);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      cursor: pointer;
+    }
+
+    /* Formulário de checkout */
+    .checkout-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-top: 35px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid var(--gold-light);
+    }
+
+    .checkout-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--text-brown);
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-brown);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid rgba(74, 51, 44, 0.2);
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-brown);
+      background-color: #FFF;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-pink);
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Modal de Observação por Item */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(74, 51, 44, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      padding: 15px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #FFF;
+      padding: 22px;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .modal-box p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn-secondary {
+      background: #eee;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--primary-pink);
+      color: #FFF;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    /* Cart Bar */
+    .cart-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #FFFFFF;
+      box-shadow: 0 -8px 25px rgba(0,0,0,0.08);
+      padding: 15px 20px;
+      z-index: 1000;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .cart-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .cart-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-count {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+    }
+
+    .cart-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-brown);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFF;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: var(--text-brown);
+      color: #FFF;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      z-index: 4000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toast" class="toast">Item adicionado ao pedido!</div>
+
+  <!-- Modal para Observação do Bolo -->
+  <div class="modal-overlay" id="itemModal">
+    <div class="modal-box">
+      <h3 id="modalTitle">Nome do Item</h3>
+      <p id="modalPrice">R$ 0,00</p>
+      <div class="form-group">
+        <label>Observação do Item (Opcional):</label>
+        <input type="text" id="modalObs" class="form-control" placeholder="Ex: Sem morango, colocar vela, etc." />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+        <button class="btn-primary" onclick="confirmAddToCart()">Adicionar ao Pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.JPEG" alt="Taty Pereira Caseirinhos Logo" />
+    </div>
+    <h1 class="brand-title">Taty Pereira</h1>
+    <p class="brand-subtitle">Caseirinhos</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Informações da Loja -->
+    <div class="info-card">
+      <h2>Informações Gerais</h2>
+      <ul class="info-list">
+        <li>Bolos produzidos artesanalmente e entregues fresquinhos.</li>
+        <li>Pagamento via PIX, Cartão ou Dinheiro.</li>
+        <li>Opção de Delivery (consultar taxa) ou Retirada.</li>
+      </ul>
+    </div>
+
+    <!-- Bolos Gelados -->
+    <h2 class="category-title">Bolos Gelados de Travessa</h2>
+
+    <div class="info-card">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Travessa P (500g):</strong> Serve aprox. 5 porções.</li>
+        <li><strong>Travessa G (1kg):</strong> Serve aprox. 10 porções.</li>
+        <li><strong>Encomendas:</strong> Com até 2 dias de antecedência.</li>
+      </ul>
+    </div>
+
+    <!-- Produtos -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Ninho com Morango</div>
+        <div class="product-desc">Creme de Ninho aveludado com morangos frescos.</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="openItemModal('Ninho com Morango (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="openItemModal('Ninho com Morango (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Ninho com Nutella</div>
+        <div class="product-desc">Combinação clássica de Ninho com Nutella original.</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="openItemModal('Ninho com Nutella (Tam P)', 70)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 70,00</span>
+        </button>
+        <button class="option-btn" onclick="openItemModal('Ninho com Nutella (Tam G)', 120)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 120,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Doce de Leite c/ Nozes</div>
+        <div class="product-desc">Doce de leite artesanal com nozes crocantes selecionadas.</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="openItemModal('Doce de Leite c/ Nozes (Tam P)', 70)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 70,00</span>
+        </button>
+        <button class="option-btn" onclick="openItemModal('Doce de Leite c/ Nozes (Tam G)', 120)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 120,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Brigadeiro</div>
+        <div class="product-desc">O preferido: brigadeiro gourmet cremoso.</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="openItemModal('Brigadeiro (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="openItemModal('Brigadeiro (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Prestígio</div>
+        <div class="product-desc">Massa de chocolate rica com recheio cremoso de coco.</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="openItemModal('Prestígio (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="openItemModal('Prestígio (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Adicionais -->
+    <div class="addons-card">
+      <h3>Adicionais Exclusivos</h3>
+      <p>Porções extra de 100g — R$ 10,00 cada</p>
+      <div class="addon-chips">
+        <div class="addon-chip" onclick="openItemModal('Adicional: Brigadeiro Tradicional (100g)', 10)">+ Brigadeiro Tradicional</div>
+        <div class="addon-chip" onclick="openItemModal('Adicional: Brigadeiro de Ninho (100g)', 10)">+ Brigadeiro de Ninho</div>
+        <div class="addon-chip" onclick="openItemModal('Adicional: Beijinho (100g)', 10)">+ Beijinho</div>
+      </div>
+    </div>
+
+    <!-- Bolos Caseiros -->
+    <h2 class="category-title">Bolos Caseiros Tradicionais</h2>
+
+    <div class="info-card">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Tamanho P:</strong> Rende aprox. 8 fatias.</li>
+        <li><strong>Tamanho M:</strong> Rende aprox. 12 fatias.</li>
+        <li><strong>Tamanho G:</strong> Rende aprox. 16 fatias.</li>
+        <li><strong>Encomendas:</strong> Com até 1 dia de antecedência.</li>
+      </ul>
+    </div>
+
+    <!-- Formulário de Dados para o Pedido -->
+    <div class="checkout-card">
+      <h2>Dados do Pedido</h2>
+      
+      <div class="form-group">
+        <label for="clientName">Seu Nome *</label>
+        <input type="text" id="clientName" class="form-control" placeholder="Digite seu nome completo" />
+      </div>
+
+      <div class="form-group">
+        <label>Tipo de Entrega *</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="deliveryType" value="Retirada" checked onclick="toggleAddressFields()" /> Retirada
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="deliveryType" value="Delivery" onclick="toggleAddressFields()" /> Delivery
+          </label>
+        </div>
+      </div>
+
+      <div id="addressFields" style="display: none;">
+        <div class="form-group">
+          <label for="clientAddress">Endereço de Entrega *</label>
+          <input type="text" id="clientAddress" class="form-control" placeholder="Rua, Número e Bairro" />
+        </div>
+        <div class="form-group">
+          <label for="clientComp">Complemento</label>
+          <input type="text" id="clientComp" class="form-control" placeholder="Apto, Bloco, Ponto de referência" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Forma de Pagamento *</label>
+        <select id="paymentMethod" class="form-control">
+          <option value="PIX">PIX</option>
+          <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+          <option value="Dinheiro">Dinheiro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="orderObs">Observação Geral do Pedido</label>
+        <textarea id="orderObs" class="form-control" rows="2" placeholder="Ex: Horário preferencial para entrega..."></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Barra de Carrinho Flutuante -->
+  <div class="cart-bar">
+    <div class="cart-content">
+      <div class="cart-info">
+        <span class="cart-count" id="cart-count">0 ITENS SELECIONADOS</span>
+        <span class="cart-total" id="cart-total">R$ 0,00</span>
+      </div>
+      <button class="whatsapp-btn" onclick="sendOrder()">
+        Enviar Pedido
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+    let currentItem = null;
+
+    const phone = "5519994604562"; 
+
+    // Lógica do Modal de Observação de Item
+    function openItemModal(name, price) {
+      currentItem = { name, price };
+      document.getElementById('modalTitle').innerText = name;
+      document.getElementById('modalPrice').innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      document.getElementById('modalObs').value = '';
+      document.getElementById('itemModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('itemModal').classList.remove('active');
+      currentItem = null;
+    }
+
+    function confirmAddToCart() {
+      if (!currentItem) return;
+      const obs = document.getElementById('modalObs').value.trim();
+      cart.push({
+        name: currentItem.name,
+        price: currentItem.price,
+        obs: obs
+      });
+      total += currentItem.price;
+      updateCartUI();
+      closeModal();
+      showToast();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cart-count').innerText = `${cart.length} ${cart.length === 1 ? 'ITEM' : 'ITENS'} SELECIONADOS`;
+      document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2000);
+    }
+
+    function toggleAddressFields() {
+      const isDelivery = document.querySelector('input[name="deliveryType"]:checked').value === 'Delivery';
+      document.getElementById('addressFields').style.display = isDelivery ? 'block' : 'none';
+    }
+
+    // Gerenciador do Número Sequencial do Pedido com Reset à Meia-Noite
+    function getNextOrderNumber() {
+      const today = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+      const lastDate = localStorage.getItem('taty_order_date');
+      let currentNum = parseInt(localStorage.getItem('taty_order_number') || '1', 10);
+
+      if (lastDate !== today) {
+        currentNum = 1;
+        localStorage.setItem('taty_order_date', today);
+      }
+
+      let formatted = currentNum.toString().padStart(2, '0');
+      localStorage.setItem('taty_order_number', (currentNum + 1).toString());
+      return formatted;
+    }
+
+    function sendOrder() {
+      if (cart.length === 0) {
+        alert("Por favor, selecione pelo menos um item para enviar o pedido.");
+        return;
+      }
+
+      const name = document.getElementById('clientName').value.trim();
+      if (!name) {
+        alert("Por favor, informe o seu nome para o pedido.");
+        document.getElementById('clientName').focus();
+        return;
+      }
+
+      const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+      const address = document.getElementById('clientAddress').value.trim();
+      const comp = document.getElementById('clientComp').value.trim();
+
+      if (deliveryType === 'Delivery' && !address) {
+        alert("Por favor, informe o endereço para entrega.");
+        document.getElementById('clientAddress').focus();
+        return;
+      }
+
+      const payment = document.getElementById('paymentMethod').value;
+      const orderObs = document.getElementById('orderObs').value.trim();
+
+      const orderNum = getNextOrderNumber();
+
+      let text = `*PEDIDO #${orderNum} - Taty Pereira Caseirinhos*\n\n`;
+      text += `👤 *Cliente:* ${name}\n`;
+      text += `🚚 *Tipo:* ${deliveryType}\n`;
+
+      if (deliveryType === 'Delivery') {
+        text += `📍 *Endereço:* ${address}\n`;
+        if (comp) text += `🏠 *Complemento:* ${comp}\n`;
+      }
+
+      text += `💳 *Forma de Pagamento:* ${payment}\n`;
+      if (orderObs) text += `📝 *Obs do Pedido:* ${orderObs}\n`;
+
+      text += `\n*ITENS DO PEDIDO:*\n`;
+      cart.forEach((item, index) => {
+        text += `${index + 1}. *${item.name}* - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+        if (item.obs) text += `   └ _Obs: ${item.obs}_\n`;
+      });
+
+      text += `\n*TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      const encodedText = encodeURIComponent(text);
+      window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedText}`;
+    }
+  </script>
+
+</body>
+</html>
