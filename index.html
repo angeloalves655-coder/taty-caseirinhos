@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taty Pereira Caseirinhos | Cardápio Gourmet</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-cream: #FCF9F5;
+      --card-bg: #FFFFFF;
+      --primary-pink: #E883A7;
+      --soft-pink: #FDF2F5;
+      --gold: #D4AF37;
+      --gold-light: #F4E8C1;
+      --text-brown: #4A332C;
+      --text-light: #7A655F;
+      --shadow-premium: 0 12px 32px rgba(74, 51, 44, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-brown);
+      line-height: 1.5;
+      padding-bottom: 110px;
+    }
+
+    /* Header Premium */
+    header {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--soft-pink) 100%);
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .logo-container {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #FFF;
+      padding: 5px;
+      box-shadow: 0 8px 20px rgba(232, 131, 167, 0.2);
+      border: 1px solid var(--gold-light);
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    h1.brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-brown);
+      letter-spacing: 0.5px;
+    }
+
+    p.brand-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: -2px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 25px 16px;
+    }
+
+    /* Cards de Informações */
+    .info-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary-pink), var(--gold));
+    }
+
+    .info-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--text-brown);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .info-list li::before {
+      content: "✦";
+      color: var(--gold);
+      font-size: 0.7rem;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* Categorias */
+    .category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      text-align: center;
+      color: var(--text-brown);
+      margin: 35px 0 20px;
+      position: relative;
+    }
+
+    .category-title::after {
+      content: '◇';
+      display: block;
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    /* Cards de Produtos */
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(232, 131, 167, 0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:active {
+      transform: scale(0.99);
+    }
+
+    .product-header {
+      margin-bottom: 15px;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-brown);
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .option-btn {
+      background: var(--soft-pink);
+      border: 1px solid rgba(232, 131, 167, 0.3);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .option-btn:hover {
+      background: var(--primary-pink);
+      color: #FFF;
+      border-color: var(--primary-pink);
+    }
+
+    .option-btn:hover .option-label,
+    .option-btn:hover .option-price {
+      color: #FFF;
+    }
+
+    .option-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-pink);
+      font-weight: 600;
+    }
+
+    .option-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-brown);
+    }
+
+    /* Seção Adicionais */
+    .addons-card {
+      background: linear-gradient(135deg, #FFF 0%, var(--soft-pink) 100%);
+      border: 1px dashed var(--gold);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .addons-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--text-brown);
+      margin-bottom: 6px;
+    }
+
+    .addons-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .addon-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .addon-chip {
+      background: #FFF;
+      border: 1px solid var(--gold-light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-brown);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    /* Barra Fixa de Carrinho e WhatsApp */
+    .cart-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      box-shadow: 0 -8px 25px rgba(0,0,0,0.08);
+      padding: 15px 20px;
+      z-index: 1000;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .cart-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .cart-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-count {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+    }
+
+    .cart-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-brown);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFF;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Notificação Toast */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: var(--text-brown);
+      color: #FFF;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toast" class="toast">Item adicionado ao pedido!</div>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Taty Pereira Caseirinhos Logo" />
+    </div>
+    <h1 class="brand-title">Taty Pereira</h1>
+    <p class="brand-subtitle">Caseirinhos</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Informações da Loja -->
+    <div class="info-card">
+      <h2>Informações Gerais</h2>
+      <ul class="info-list">
+        <li>Bolos produzidos artesanalmente e entregues fresquinhos[span_0](start_span)[span_0](end_span).</li>
+        <li>Pagamento via PIX, Cartão ou Dinheiro[span_1](start_span)[span_1](end_span).</li>
+        <li>Opção de Delivery (consultar taxa) ou Retirada[span_2](start_span)[span_2](end_span).</li>
+      </ul>
+    </div>
+
+    <!-- Bolos Gelados -->
+    <h2 class="category-title">Bolos Gelados de Travessa</h2>
+
+    <div class="info-card">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Travessa P (500g):</strong> Serve aprox. 5 porções[span_3](start_span)[span_3](end_span).</li>
+        <li><strong>Travessa G (1kg):</strong> Serve aprox. 10 porções[span_4](start_span)[span_4](end_span).</li>
+        <li><strong>Encomendas:</strong> Com até 2 dias de antecedência[span_5](start_span)[span_5](end_span).</li>
+      </ul>
+    </div>
+
+    <!-- Lista de Produtos: Bolos Gelados -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Ninho com Morango</div>
+        <div class="product-desc">Creme de Ninho aveludado com morangos frescos[span_6](start_span)[span_6](end_span).</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="addToCart('Ninho com Morango (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="addToCart('Ninho com Morango (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Ninho com Nutella</div>
+        <div class="product-desc">Combinação clássica de Ninho com Nutella original[span_7](start_span)[span_7](end_span).</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="addToCart('Ninho com Nutella (Tam P)', 70)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 70,00</span>
+        </button>
+        <button class="option-btn" onclick="addToCart('Ninho com Nutella (Tam G)', 120)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 120,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Doce de Leite c/ Nozes</div>
+        <div class="product-desc">Doce de leite artesanal com nozes crocantes selecionadas[span_8](start_span)[span_8](end_span).</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="addToCart('Doce de Leite c/ Nozes (Tam P)', 70)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 70,00</span>
+        </button>
+        <button class="option-btn" onclick="addToCart('Doce de Leite c/ Nozes (Tam G)', 120)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 120,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Brigadeiro</div>
+        <div class="product-desc">O preferido: brigadeiro gourmet cremoso[span_9](start_span)[span_9](end_span).</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="addToCart('Brigadeiro (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="addToCart('Brigadeiro (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-name">Prestígio</div>
+        <div class="product-desc">Massa de chocolate rica com recheio cremoso de coco[span_10](start_span)[span_10](end_span).</div>
+      </div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="addToCart('Prestígio (Tam P)', 60)">
+          <span class="option-label">Tam P (500g)</span>
+          <span class="option-price">R$ 60,00</span>
+        </button>
+        <button class="option-btn" onclick="addToCart('Prestígio (Tam G)', 90)">
+          <span class="option-label">Tam G (1kg)</span>
+          <span class="option-price">R$ 90,00</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Adicionais -->
+    <div class="addons-card">
+      <h3>Adicionais Exclusivos</h3>
+      <p>Porções extra de 100g — R$ 10,00 cada[span_11](start_span)[span_11](end_span)</p>
+      <div class="addon-chips">
+        <div class="addon-chip" onclick="addToCart('Adicional: Brigadeiro Tradicional (100g)', 10)">+ Brigadeiro Tradicional</div>
+        <div class="addon-chip" onclick="addToCart('Adicional: Brigadeiro de Ninho (100g)', 10)">+ Brigadeiro de Ninho</div>
+        <div class="addon-chip" onclick="addToCart('Adicional: Beijinho (100g)', 10)">+ Beijinho</div>
+      </div>
+    </div>
+
+    <!-- Bolos Caseiros -->
+    <h2 class="category-title">Bolos Caseiros Traditional</h2>
+
+    <div class="info-card">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Tamanho P:</strong> Rende aprox. 8 fatias[span_12](start_span)[span_12](end_span).</li>
+        <li><strong>Tamanho M:</strong> Rende aprox. 12 fatias[span_13](start_span)[span_13](end_span).</li>
+        <li><strong>Tamanho G:</strong> Rende aprox. 16 fatias[span_14](start_span)[span_14](end_span).</li>
+        <li><strong>Encomendas:</strong> Com até 1 dia de antecedência[span_15](start_span)[span_15](end_span).</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Barra de Carrinho Flutuante -->
+  <div class="cart-bar">
+    <div class="cart-content">
+      <div class="cart-info">
+        <span class="cart-count" id="cart-count">0 ITENS SELECIONADOS</span>
+        <span class="cart-total" id="cart-total">R$ 0,00</span>
+      </div>
+      <button class="whatsapp-btn" onclick="sendOrder()">
+        Enviar Pedido
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    // Altere aqui para o número de WhatsApp pretendido (com código de país e DDD)
+    const phone = "5500000000000"; 
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      total += price;
+      updateCartUI();
+      showToast();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cart-count').innerText = `${cart.length} ${cart.length === 1 ? 'ITEM' : 'ITENS'} SELECIONADOS`;
+      document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    function sendOrder() {
+      if (cart.length === 0) {
+        alert("Selecione pelo menos um item para enviar o pedido.");
+        return;
+      }
+
+      let text = "*Novo Pedido - Taty Pereira Caseirinhos*\n\n";
+      text += "*Itens Selecionados:*\n";
+      
+      cart.forEach((item, index) => {
+        text += `${index + 1}. ${item.name} - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      });
+
+      text += `\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+      
+      const encodedText = encodeURIComponent(text);
+      window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
