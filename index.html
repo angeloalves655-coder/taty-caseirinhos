@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taty Pereira Caseirinhos | Cardápio Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #fdf8f5;
+      --card-bg: #ffffff;
+      --primary-pink: #f28ab2;
+      --accent-gold: #d4af37;
+      --text-brown: #5c3d2e;
+      --light-pink: #fceef3;
+      --shadow: 0 8px 24px rgba(92, 61, 46, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-brown);
+      line-height: 1.6;
+      padding-bottom: 90px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #fff 0%, var(--light-pink) 100%);
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+    }
+
+    header img.logo {
+      max-width: 140px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      margin-bottom: 15px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary-pink);
+    }
+
+    .info-card h2 {
+      color: var(--primary-pink);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .info-list li::before {
+      content: "•";
+      color: var(--accent-gold);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      color: var(--text-brown);
+      margin: 30px 0 20px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: var(--accent-gold);
+      margin: 8px auto 0;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(242, 138, 178, 0.15);
+    }
+
+    .item-info h3 {
+      font-size: 1.1rem;
+      color: var(--text-brown);
+      margin-bottom: 4px;
+    }
+
+    .item-prices {
+      display: flex;
+      gap: 12px;
+      text-align: right;
+    }
+
+    .price-tag {
+      background: var(--light-pink);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-brown);
+    }
+
+    .price-tag span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--primary-pink);
+      text-transform: uppercase;
+    }
+
+    .addons-box {
+      background: linear-gradient(135deg, var(--light-pink) 0%, #fff 100%);
+      border: 1px dashed var(--primary-pink);
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .addons-box h4 {
+      font-size: 0.95rem;
+      color: var(--primary-pink);
+      margin-bottom: 5px;
+    }
+
+    .addons-box p {
+      font-size: 0.85rem;
+    }
+
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #25d366;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      width: 90%;
+      max-width: 360px;
+      justify-content: center;
+    }
+
+    @media (min-width: 600px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Substituir pelo link direto da sua imagem/logo -->
+    <img src="logo.png" alt="Taty Pereira Caseirinhos Logo" class="logo" />
+    <h1>Taty Pereira</h1>
+    <p style="font-size: 0.9rem; letter-spacing: 2px; color: var(--accent-gold);">CASEIRINHOS</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Informações Iniciais -->
+    <div class="info-card">
+      <h2>Informações Iniciais</h2>
+      <ul class="info-list">
+        <li>Trabalhamos com bolos entregues sempre fresquinhos[span_4](start_span)[span_4](end_span).</li>
+        <li>Formas de pagamento: PIX, Cartão e Dinheiro[span_5](start_span)[span_5](end_span).</li>
+        <li>Delivery (consultar taxa) ou Retirada[span_6](start_span)[span_6](end_span).</li>
+      </ul>
+    </div>
+
+    <!-- Seção: Bolos Caseiros -->
+    <h2 class="section-title">Bolos Caseiros</h2>
+    
+    <div class="info-card" style="border-left-color: var(--accent-gold);">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Tamanho P:</strong> Rende aprox. 8 fatias[span_7](start_span)[span_7](end_span).</li>
+        <li><strong>Tamanho M:</strong> Rende aprox. 12 fatias[span_8](start_span)[span_8](end_span).</li>
+        <li><strong>Tamanho G:</strong> Rende aprox. 16 fatias[span_9](start_span)[span_9](end_span).</li>
+        <li><strong>Encomendas:</strong> Agendadas com até 1 dia de antecedência[span_10](start_span)[span_10](end_span).</li>
+      </ul>
+    </div>
+
+    <!-- Seção: Bolos Gelados (Travessa) -->
+    <h2 class="section-title">Bolos Gelados (Travessa)</h2>
+
+    <div class="info-card" style="border-left-color: var(--primary-pink);">
+      <h2>Rendimento & Prazos</h2>
+      <ul class="info-list">
+        <li><strong>Travessa P (500g):</strong> Serve aprox. 5 porções[span_11](start_span)[span_11](end_span).</li>
+        <li><strong>Travessa G (1kg):</strong> Serve aprox. 10 porções[span_12](start_span)[span_12](end_span).</li>
+        <li><strong>Encomendas:</strong> Agendadas com até 2 dias de antecedência[span_13](start_span)[span_13](end_span).</li>
+      </ul>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Ninho com Morango</h3>
+        </div>
+        <div class="item-prices">
+          <div class="price-tag"><span>Tam P</span>R$ 60</div>
+          <div class="price-tag"><span>Tam G</span>R$ 90</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Ninho com Nutella</h3>
+        </div>
+        <div class="item-prices">
+          <div class="price-tag"><span>Tam P</span>R$ 70</div>
+          <div class="price-tag"><span>Tam G</span>R$ 120</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Doce de Leite c/ Nozes</h3>
+        </div>
+        <div class="item-prices">
+          <div class="price-tag"><span>Tam P</span>R$ 70</div>
+          <div class="price-tag"><span>Tam G</span>R$ 120</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Brigadeiro</h3>
+        </div>
+        <div class="item-prices">
+          <div class="price-tag"><span>Tam P</span>R$ 60</div>
+          <div class="price-tag"><span>Tam G</span>R$ 90</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <h3>Prestígio</h3>
+        </div>
+        <div class="item-prices">
+          <div class="price-tag"><span>Tam P</span>R$ 60</div>
+          <div class="price-tag"><span>Tam G</span>R$ 90</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="addons-box">
+      <h4>Adicionais (100g) — R$ 10,00 cada</h4>
+      <p>Brigadeiro Tradicional | Brigadeiro de Ninho | Beijinho[span_14](start_span)[span_14](end_span)</p>
+    </div>
+
+  </div>
+
+  <!-- Botão WhatsApp -->
+  <a href="https://wa.me/5500000000000" class="floating-btn" target="_blank">
+    Fazer Encomenda via WhatsApp
+  </a>
+
+</body>
+</html>
